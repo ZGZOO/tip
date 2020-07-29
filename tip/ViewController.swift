@@ -15,9 +15,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipPercentageLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     
+    
+    @IBOutlet weak var settingButton: UIBarButtonItem!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // Sets the title in the Navigation Bar
+        self.title = "Tipper"
     }
     
     @IBAction func onTap(_ sender: Any) {
