@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TipViewController.swift
 //  tip
 //
 //  Created by Zhijie (Jenny) Xu on 7/18/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TipViewController: UIViewController {
 
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var billAmountTextField: UITextField!
@@ -27,6 +27,11 @@ class ViewController: UIViewController {
         self.title = "Tipper"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //retrieve the default tip percentage
+    }
+    
     @IBAction func onTap(_ sender: Any) {
     }
     
@@ -43,6 +48,7 @@ class ViewController: UIViewController {
         tipPercentageLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format:"$%.2f", total)
     }
+//    support@codepath.org
     
 }
 

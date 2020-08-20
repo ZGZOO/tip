@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tipper-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="tip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TipViewController" customModule="tip" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5x-bg-cwm" userLabel="Tip Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5x-bg-cwm" userLabel="Tip Label">
                                 <rect key="frame" x="349" y="282" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -44,10 +44,10 @@
                                     <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="wPE-jX-i9F"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k1f-T4-VJ7" userLabel="Bill Field">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k1f-T4-VJ7" userLabel="Bill Field">
                                 <rect key="frame" x="349" y="114" width="45" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="P3O-y8-PB7"/>
                                 </connections>
@@ -58,7 +58,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpE-Ds-NZ5" userLabel="Total Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpE-Ds-NZ5" userLabel="Total Label">
                                 <rect key="frame" x="349" y="387" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -94,7 +94,7 @@
                             <outletCollection property="gestureRecognizers" destination="SJO-ig-oDd" appends="YES" id="Oix-1H-KNr"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="mxv-T2-Q8B">
+                    <navigationItem key="navigationItem" title="Tipper" id="mxv-T2-Q8B">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="olj-Rx-beK">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n5i-hN-06A">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
@@ -138,6 +138,9 @@
                                     <segment title="18%"/>
                                     <segment title="20%"/>
                                 </segments>
+                                <connections>
+                                    <action selector="setTipPercentage:" destination="cza-lW-jUZ" eventType="valueChanged" id="thg-xr-CcO"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default tip percentage:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zxh-bh-O4h">
                                 <rect key="frame" x="20" y="161" width="231" height="21"/>
@@ -147,6 +150,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="17b-tq-TaA" firstAttribute="leading" secondItem="aIF-2k-u9t" secondAttribute="leadingMargin" id="98Z-HF-1vR"/>
                             <constraint firstItem="Zxh-bh-O4h" firstAttribute="leading" secondItem="sbr-Fn-4EM" secondAttribute="leading" constant="20" id="JPi-dG-j05"/>
@@ -156,10 +160,21 @@
                             <constraint firstItem="17b-tq-TaA" firstAttribute="top" secondItem="Zxh-bh-O4h" secondAttribute="bottom" constant="45" id="oDA-hu-pVZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sbr-Fn-4EM"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="PgW-3p-Gf5" appends="YES" id="3N0-eV-Os5"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Q2U-A2-i3P"/>
+                    <connections>
+                        <outlet property="tipControl" destination="17b-tq-TaA" id="4QH-oZ-Cek"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHZ-v2-pay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="PgW-3p-Gf5">
+                    <connections>
+                        <action selector="onTap:" destination="cza-lW-jUZ" id="bWI-ed-5PS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1885.5072463768117" y="138.61607142857142"/>
         </scene>

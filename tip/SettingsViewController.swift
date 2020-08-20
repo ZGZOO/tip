@@ -9,14 +9,24 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    @IBOutlet weak var tipControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func onTap(_ sender: Any) {
+    }
+    
+    let defaults = UserDefaults.standard
+    @IBAction func setTipPercentage(_ sender: Any) {
+        let tipPercentages = [0.15, 0.18, 0.2]
+        let tip = tipPercentages[tipControl.selectedSegmentIndex]
+        defaults.set(tip, forKey: "tipPercent")
+        defaults.synchronize()
+    }
+    
     /*
     // MARK: - Navigation
 
